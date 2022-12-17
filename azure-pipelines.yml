@@ -24,13 +24,13 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'dist'
     publishLocation: 'Container'
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'dist'
-    downloadPath: '$(Build.ArtifactStagingDirectory)'
-    RuntimeStack: 'NODE|10.12'
+# - task: DownloadBuildArtifacts@1
+#   inputs:
+#     buildType: 'current'
+#     downloadType: 'single'
+#     artifactName: 'dist'
+#     downloadPath: '$(Build.ArtifactStagingDirectory)'
+#     RuntimeStack: 'NODE|10.12'
 - task: CmdLine@2
   inputs:
     script: ls -lR $(Build.ArtifactStagingDirectory)
