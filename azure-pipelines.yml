@@ -22,14 +22,14 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'dist'
     publishLocation: 'Container'
 - task: DownloadBuildArtifacts@1
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: 'drop'
-    downloadPath: '$(System.DefaultWorkingDirectory)'
+    artifactName: 'dist'
+    downloadPath: '$(Build.ArtifactStagingDirectory)'
     RuntimeStack: 'NODE|10.12'
 
 - task: AzureRmWebAppDeployment@4
@@ -38,5 +38,5 @@ steps:
     azureSubscription: 'Azure subscription 1 (b0f53ad6-7dd8-4b1d-ba55-234f90a2a54c)'
     appType: 'webAppLinux'
     WebAppName: 'udemy-webapp'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
     RuntimeStack: 'NODE|10.12'
