@@ -33,7 +33,7 @@ steps:
     RuntimeStack: 'NODE|10.12'
 - task: CmdLine@2
   inputs:
-    script: 'ls -lR ''$(Build.ArtifactStagingDirectory)'''
+    script: ls -lR $(Build.ArtifactStagingDirectory)
 # - task: AzureRmWebAppDeployment@4
 #   inputs:
 #     ConnectionType: 'AzureRM'
