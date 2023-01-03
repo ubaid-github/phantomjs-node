@@ -32,21 +32,21 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'dist'
     publishLocation: 'Container'
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'dist'
-    itemPattern: '**zip'
-    downloadPath: '$(Build.ArtifactStagingDirectory)'
-- task: CmdLine@2
-  inputs:
-    script: ls -lR $(Build.ArtifactStagingDirectory)
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1 (b0f53ad6-7dd8-4b1d-ba55-234f90a2a54c)'
-    appType: 'webAppLinux'
-    WebAppName: 'udemy-webapp'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-    RuntimeStack: 'NODE|10.12'
+# - task: DownloadBuildArtifacts@1
+#   inputs:
+#     buildType: 'current'
+#     downloadType: 'single'
+#     artifactName: 'dist'
+#     itemPattern: '**zip'
+#     downloadPath: '$(Build.ArtifactStagingDirectory)'
+# - task: CmdLine@2
+#   inputs:
+#     script: ls -lR $(Build.ArtifactStagingDirectory)
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure subscription 1 (b0f53ad6-7dd8-4b1d-ba55-234f90a2a54c)'
+#     appType: 'webAppLinux'
+#     WebAppName: 'udemy-webapp'
+#     packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+#     RuntimeStack: 'NODE|10.12'
